@@ -1,5 +1,5 @@
 import { axios, timeout } from './utils'
-import { writeLog } from './log'
+import { addLog, removeLog } from './log'
 import { COLLECTION_ID, DATA_SOURCE_COLLECTION_ID, LIMIT } from './env'
 
 export async function queryLastPage() {
@@ -45,18 +45,19 @@ export async function addArticleIntoCollection(id: number) {
     const res = await axios({
       method: 'post',
       url: `/collections/${COLLECTION_ID}/contents`,
+      headers: {
+        referer: `https://zhuanlan.zhihu.com/p/${id}`,
+      },
       params: {
         content_id: id,
         content_type: 'article',
       },
     })
     const { success } = res.data
-    if (!Boolean(success)) {
-      writeLog('addArticleIntoCollection', id)
-    }
+    Boolean(success) ? removeLog(id) : addLog(id)
   } catch (e) {
     console.log(`--- addArticleIntoCollection id: ${id} ---`)
     console.log(e.response.status)
-    writeLog('addArticleIntoCollection', id)
+    addLog(id)
   }
 }

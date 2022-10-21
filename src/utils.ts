@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { uas } from './data'
 import {
   X_AB_PB,
   X_XSRFTOKEN,
@@ -6,7 +7,6 @@ import {
   X_ZSE_96,
   X_ZSE_81,
   COOKIE,
-  USER_AGENT,
 } from './env'
 
 const instance = axios.create({
@@ -21,12 +21,18 @@ const instance = axios.create({
     'x-zse-93': X_ZSE_93,
     'x-zse-96': X_ZSE_96,
     'x-zst-81': X_ZSE_81,
-    'user-agent': USER_AGENT,
+    'user-agent': ua(),
   },
 })
 
 export { instance as axios }
 
 export function timeout() {
-  return Math.ceil(Math.random() * 10) * 1000
+  return Math.ceil(Math.random() * 20) * 1000
+}
+
+export function ua() {
+  const i = Math.floor(Math.random() * uas.length)
+  const ua = uas[i]
+  return ua
 }

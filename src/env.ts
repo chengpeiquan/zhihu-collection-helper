@@ -12,7 +12,6 @@ const {
   X_ZSE_96,
   X_ZSE_81,
   COOKIE,
-  USER_AGENT,
 } = process.env
 
 export {
@@ -25,5 +24,4 @@ export {
   X_ZSE_96,
   X_ZSE_81,
   COOKIE,
-  USER_AGENT,
 }
