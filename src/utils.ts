@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { uas } from './data'
 import {
+  START_PAGE_NUMBER,
   X_AB_PB,
   X_XSRFTOKEN,
   X_ZSE_93,
@@ -27,8 +28,18 @@ const instance = axios.create({
 
 export { instance as axios }
 
-export function timeout() {
-  return Math.ceil(Math.random() * 20) * 1000
+export function firstPage() {
+  const start = Number(START_PAGE_NUMBER)
+  return start > 0 ? start - 1 : 0
+}
+
+export function sleep(): Promise<void> {
+  return new Promise((resolve) => {
+    const timeout = Math.ceil(Math.random() * 5) * 1000
+    setTimeout(() => {
+      resolve()
+    }, timeout)
+  })
 }
 
 export function ua() {

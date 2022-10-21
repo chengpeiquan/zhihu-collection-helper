@@ -1,5 +1,4 @@
-import { axios, timeout } from './utils'
-import { addLog, removeLog } from './log'
+import { axios, sleep } from './utils'
 import { COLLECTION_ID, DATA_SOURCE_COLLECTION_ID, LIMIT } from './env'
 
 export async function queryLastPage() {
@@ -29,11 +28,11 @@ export async function queryArticles(offset: number) {
     const { data: articles } = res.data
     if (!Array.isArray(articles) || !articles.length) return
 
-    articles.forEach((i) => {
-      setTimeout(async () => {
-        await addArticleIntoCollection(+i.id)
-      }, timeout())
-    })
+    for (let i = 0; i < articles.length; i++) {
+      await sleep()
+      const id = +articles[i].id
+      await addArticleIntoCollection(id)
+    }
   } catch (e) {
     console.log(`--- queryArticles offset: ${offset} ---`)
     console.log(e)
@@ -54,10 +53,11 @@ export async function addArticleIntoCollection(id: number) {
       },
     })
     const { success } = res.data
-    Boolean(success) ? removeLog(id) : addLog(id)
+    if (!Boolean(success)) {
+      console.log(`--- addArticleIntoCollection id: ${id} ---`)
+    }
   } catch (e) {
     console.log(`--- addArticleIntoCollection id: ${id} ---`)
-    console.log(e.response.status)
-    addLog(id)
+    console.log(e.response.status, e.response.statusText)
   }
 }

@@ -1,13 +1,12 @@
 {
   "name": "zhihu-collection-adder",
-  "description": "Add article or answer into collection on ZhiHu.",
+  "description": "Add articles from column into collection on ZhiHu.",
   "version": "1.0.0",
   "author": "chengpeiquan <chengpeiquan@chengpeiquan.com>",
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
-    "start": "tsx src --start",
-    "retry": "tsx src --retry",
+    "start": "tsx src",
     "backup": "git add . && git commit -m \"chore: backup\" && git push"
   },
   "devDependencies": {
