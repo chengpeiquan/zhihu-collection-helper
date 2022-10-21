@@ -26,7 +26,9 @@ pnpm start
 
 ## 配置文件
 
-基于 [dotenv](https://github.com/motdotla/dotenv) 管理配置文件，创建一个名为 `.env` 的文件保存到
+基于 [dotenv](https://github.com/motdotla/dotenv) 管理配置文件，创建一个名为 `.env` 的文件保存到根目录（与 src 目录同级别）。
+
+注意所有的配置项的值都是字符串，也就是使用双引号括住。
 
 |         配置选项          |         作用          |         数据来源或设置说明         |
 | :-----------------------: | :-------------------: | :--------------------------------: |
@@ -40,3 +42,7 @@ pnpm start
 |         X_ZSE_96          |    请求的鉴权参数     | 知乎 AJAX 请求的 `Request Headers` |
 |         X_ZSE_81          |    请求的鉴权参数     | 知乎 AJAX 请求的 `Request Headers` |
 |          COOKIE           |    请求的鉴权参数     | 知乎 AJAX 请求的 `Request Headers` |
+
+## 其他说明
+
+因为操作太快会导致行为限制，所以每次请求之前都通过 [sleep()](./src/utils.ts#L36-L43) 方法进行一次随机秒数的睡眠，可在这里调整操作间隔。
