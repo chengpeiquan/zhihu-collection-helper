@@ -4,8 +4,6 @@
 
 参考收藏夹：[凶杀案·刑侦与法医](https://www.zhihu.com/collection/839257512)
 
->建议先隐藏收藏夹，收集好内容再开放，避免刷屏读者的时间线
-
 ## 使用方法
 
 这是一个 Node.js 项目，因此需要提前安装 [Node.js](https://nodejs.org/zh-cn/) 。
