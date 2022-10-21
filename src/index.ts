@@ -1,4 +1,4 @@
-import { queryLastPage, queryArticles, addArticleIntoCollection } from './api'
+import { queryLastPage, queryArticles } from './api'
 import { firstPage, sleep } from './utils'
 import { LIMIT } from './env'
 
