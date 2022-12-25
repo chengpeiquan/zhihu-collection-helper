@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { uas } from './data'
+import { randomUserAgent, sleep as _sleep } from '@bassist/utils'
 import {
   START_PAGE_NUMBER,
   X_AB_PB,
@@ -22,7 +22,7 @@ const instance = axios.create({
     'x-zse-93': X_ZSE_93,
     'x-zse-96': X_ZSE_96,
     'x-zst-81': X_ZSE_81,
-    'user-agent': ua(),
+    'user-agent': randomUserAgent(),
   },
 })
 
@@ -33,17 +33,7 @@ export function firstPage() {
   return start > 0 ? start - 1 : 0
 }
 
-export function sleep(): Promise<void> {
-  return new Promise((resolve) => {
-    const timeout = Math.ceil(Math.random() * 5) * 1000
-    setTimeout(() => {
-      resolve()
-    }, timeout)
-  })
-}
-
-export function ua() {
-  const i = Math.floor(Math.random() * uas.length)
-  const ua = uas[i]
-  return ua
+export async function sleep(): Promise<void> {
+  const timeout = Math.ceil(Math.random() * 5) * 1000
+  await _sleep(timeout)
 }

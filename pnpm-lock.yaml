@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@bassist/utils': ^0.5.1
   '@types/node': ^18.11.2
   axios: ^1.1.3
   dotenv: ^16.0.3
@@ -8,6 +9,7 @@ specifiers:
   typescript: ^4.8.4
 
 devDependencies:
+  '@bassist/utils': 0.5.1
   '@types/node': 18.11.2
   axios: 1.1.3
   dotenv: 16.0.3
@@ -15,6 +17,12 @@ devDependencies:
   typescript: 4.8.4
 
 packages:
+
+  /@bassist/utils/0.5.1:
+    resolution: {integrity: sha512-vljQ2mjnxgp2Eo5uQ7BXdhbx2jVdCyE+LGEH5VD7lOHktp5fAnLEKvO+KaVDs4rv46UCPNAQvaKEPD7UBiA7VQ==}
+    dependencies:
+      '@withtypes/mime': 0.1.2
+    dev: true
 
   /@esbuild-kit/cjs-loader/2.4.0:
     resolution: {integrity: sha512-DBBCiHPgL2B/elUpvCDhNHXnlZQ9sfO2uyt1OJyAXKT41beQEFY4OxZ6gwS+ZesRCbZ6JV8M7GEyOPkjv8kdIw==}
@@ -57,6 +65,12 @@ packages:
 
   /@types/node/18.11.2:
     resolution: {integrity: sha512-BWN3M23gLO2jVG8g/XHIRFWiiV4/GckeFIqbU/C4V3xpoBBWSMk4OZomouN0wCkfQFPqgZikyLr7DOYDysIkkw==}
+    dev: true
+
+  /@withtypes/mime/0.1.2:
+    resolution: {integrity: sha512-PB9BfZGzwblUONJY0LiOwsHCA6uV3DIPj/w9ReekdHxPOl0VdUFgI5s4avKycuuq9Gf5Nz2ZPA2O36GAUzlMPA==}
+    dependencies:
+      mime: 3.0.0
     dev: true
 
   /asynckit/0.4.0:
@@ -345,6 +359,12 @@ packages:
     engines: {node: '>= 0.6'}
     dependencies:
       mime-db: 1.52.0
+    dev: true
+
+  /mime/3.0.0:
+    resolution: {integrity: sha512-jSCU7/VB1loIWBZe14aEYHU/+1UMEHoaO7qxCOVJOw9GgH72VAWppxNcjU+x9a2k3GSIBXNKxXQFqRvvZ7vr3A==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
     dev: true
 
   /proxy-from-env/1.1.0:
